@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Trivia Master</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <link rel="apple-touch-icon" href="icons/icon-192x192.png">
+    <meta name="theme-color" content="#4CAF50">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.5.1/dist/confetti.browser.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="app">
+        <div class="background-animation"></div>
+        <div id="welcome-screen" class="screen active glass-morphism">
+            <div class="logo-container">
+                <div class="logo-circle">
+                    <span class="logo-text">HD's</span>
+                </div>
+                <h1>Trivia Master</h1>
+            </div>
+            <div class="input-group glass-morphism">
+                <div class="input-wrapper">
+                    <input type="text" id="player-name" placeholder="Enter your name" required>
+                    <span class="input-focus-border"></span>
+                </div>
+                <div class="input-wrapper">
+                    <select id="category-select">
+                        <option value="">Select Category</option>
+                        <option value="random">🎲 I'm Feeling Lucky!</option>
+                    </select>
+                    <span class="input-focus-border"></span>
+                </div>
+                <div class="input-wrapper">
+                    <input type="number" id="timer-input" placeholder="Timer (seconds)" min="10" max="60" value="60">
+                    <span class="input-focus-border"></span>
+                </div>
+                <button id="start-game" class="primary-btn">
+                    <span class="btn-text">Start Game</span>
+                    <span class="btn-shine"></span>
+                </button>
+            </div>
+            <div class="high-scores glass-morphism">
+                <h2>🏆 Your High Scores</h2>
+                <div id="scores-list"></div>
+            </div>
+        </div>
+
+        <div id="game-screen" class="screen">
+            <div class="game-header glass-morphism">
+                <div class="player-info">
+                    <span id="player-name-display" class="glow-text"></span>
+                    <span id="score-display" class="score-pill">Score: 0</span>
+                </div>
+                <div id="timer" class="timer pulse">60 secs</div>
+            </div>
+            <div class="question-container glass-morphism">
+                <div class="question-number">Question <span id="current-question">1</span>/10</div>
+                <h2 id="question-text" class="glow-text"></h2>
+                <div id="answers" class="answers-grid"></div>
+            </div>
+            <div class="progress-bar">
+                <div id="progress-fill"></div>
+            </div>
+        </div>
+
+        <div id="result-screen" class="screen">
+            <div class="result-container glass-morphism">
+                <div class="trophy-animation">
+                    <span class="trophy">🏆</span>
+                </div>
+                <h2 class="glow-text">Game Over!</h2>
+                <div class="result-details">
+                    <div class="result-card">
+                        <span class="result-icon">🎯</span>
+                        <p>Final Score: <span id="final-score" class="highlight">0</span></p>
+                    </div>
+                    <div class="result-card">
+                        <span class="result-icon">✨</span>
+                        <p>Correct Answers: <span id="correct-answers" class="highlight">0</span></p>
+                    </div>
+                </div>
+                <button id="play-again" class="primary-btn">
+                    <span class="btn-text">Play Again</span>
+                    <span class="btn-shine"></span>
+                </button>
+            </div>
+        </div>
+    </div>
+    <script src="app.js"></script>
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('/service-worker.js')
+                .then(registration => console.log('ServiceWorker registered'))
+                .catch(error => console.log('ServiceWorker registration failed:', error));
+        }
+    </script>
+</body>
+</html>
