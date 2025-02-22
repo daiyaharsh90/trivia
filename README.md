@@ -1,4 +1,4 @@
-# Trivia Master
+# HD's Trivia Master
 
 A modern Progressive Web App (PWA) trivia quiz game built with HTML5, CSS3, and JavaScript.
 
